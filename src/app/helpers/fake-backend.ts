@@ -6,11 +6,52 @@ export function fakeBackendFactory(
     options: BaseRequestOptions) {
     
       
+  let jane={
+      admin: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwiZmlyc3ROYW1lIjoiSmFuZSIsImxhc3ROYW1lIjoiRG9lIiwiZW1haWwiOiJqYW5lQGdtYWlsLmxvY2FsIiwiaWF0IjoxNTM4NDk5NjgxLCJleHAiOjE1NDg0NjA4MDAsImF2YXRhciI6Imh0dHBzOi8vd3d3LnJ0aS5vcmcvc2l0ZXMvZGVmYXVsdC9maWxlcy9zdHlsZXMvcnRpX3NxdWFyZV8xMDIwL3B1YmxpYy9leHBlcnQtaW1hZ2VzL2FsbGVuX2phbmVfNzk0MV81MTAuanBnP2l0b2s9VlZtbFVwTHciLCJpc0FkbWluIjp0cnVlfQ.BadiWPqYsxX7tvHRbjmnX_T4fqdW7vs1ies_NQup-tM",
+      notAdmin: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwiZmlyc3ROYW1lIjoiSmFuZSIsImxhc3ROYW1lIjoiRG9lIiwiZW1haWwiOiJqYW5lQGdtYWlsLmxvY2FsIiwiaWF0IjoxNTM4NDk5NjgxLCJleHAiOjE1NDg0NjA4MDAsImF2YXRhciI6Imh0dHBzOi8vd3d3LnJ0aS5vcmcvc2l0ZXMvZGVmYXVsdC9maWxlcy9zdHlsZXMvcnRpX3NxdWFyZV8xMDIwL3B1YmxpYy9leHBlcnQtaW1hZ2VzL2FsbGVuX2phbmVfNzk0MV81MTAuanBnP2l0b2s9VlZtbFVwTHciLCJpc0FkbWluIjpmYWxzZX0.a2k3zspWMuj4FeGoouy-nJrHMlYyT9ClVH2IuXO-vl8"
+    };
+  let john={
+      admin: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwiZmlyc3ROYW1lIjoiSm9obiIsImxhc3ROYW1lIjoiRG9lIiwiZW1haWwiOiJqb2huQGdtYWlsLmxvY2FsIiwiaWF0IjoxNTM4NDk5NjgxLCJleHAiOjE1NDg0NjA4MDAsImF2YXRhciI6Imh0dHBzOi8vd3d3LmhvYS5veC5hYy51ay9zaXRlcy9kZWZhdWx0L2ZpbGVzL3N0eWxlcy9wZXJzb25fcHJvZmlsZV9waG90by9wdWJsaWMvaG9hL2ltYWdlcy9wZXJzb24vam9obl9ibGFraW5nZXJfMy5qcGc_aXRvaz12R0dDTmZzVyIsImlzQWRtaW4iOnRydWV9.4OtF2gAEg87MjGGS-RKU3-jnP20i0gBe6hyqVPrMkw4",
+      notAdmin: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwiZmlyc3ROYW1lIjoiSm9obiIsImxhc3ROYW1lIjoiRG9lIiwiZW1haWwiOiJqb2huQGdtYWlsLmxvY2FsIiwiaWF0IjoxNTM4NDk5NjgxLCJleHAiOjE1NDg0NjA4MDAsImF2YXRhciI6Imh0dHBzOi8vd3d3LmhvYS5veC5hYy51ay9zaXRlcy9kZWZhdWx0L2ZpbGVzL3N0eWxlcy9wZXJzb25fcHJvZmlsZV9waG90by9wdWJsaWMvaG9hL2ltYWdlcy9wZXJzb24vam9obl9ibGFraW5nZXJfMy5qcGc_aXRvaz12R0dDTmZzVyIsImlzQWRtaW4iOmZhbHNlfQ._ZRGljKt2WFqduP0oJJDqWKN4qC4O01V6c1anawf5Ls"
+    };
 
-  let activeAdminToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwibmFtZSI6Ik5vbG9neS5pbyIsImlhdCI6MTUzODQ5OTY4MSwiZXhwIjoxNTQ4NDYwODAwLCJpc0FkbWluIjp0cnVlfQ.piOqYmMe-Qz-g3OT78wPc-ybPAjaQQ_NqEja7jF0X_0';
-  let activeNotAdminToken='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwibmFtZSI6Ik5vbG9neS5pbyIsImlhdCI6MTUzODQ5OTY4MSwiZXhwIjoxNTQ4NDYwODAwLCJpc0FkbWluIjpmYWxzZX0.jmB9qQTEgetdV9OhT8IJUwK1Zr3Y1sOqf-Mujwi8GFI';  
-  let inactiveToken='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwibmFtZSI6Ik5vbG9neS5pbyIsImlhdCI6MTUzODQ5OTY4MSwiZXhwIjoxNTM4NDk5NjgyfQ.lZvSS5luDP92-G-x_NX7MRbrnZp0X3sKq3KDYkHtUsw';
-  let token=activeAdminToken;
+  function getTokenFromEmail(email){
+    let token:string;
+
+    switch(email) {
+      case "jane@gmail.admin":
+          token=jane.admin;
+          break;
+      case "jane@gmail.local":
+          token=jane.notAdmin;
+          break;
+      case "john@gmail.admin":
+          token=john.admin;
+          break;
+      case "john@gmail.local":
+          token=john.notAdmin;
+          break;
+      default:
+          token=jane.admin;
+  }
+  return token;
+  }
+
+  function respond(body,connection){
+   let token=getTokenFromEmail(body.email);
+
+    if (token && body.password === '1234') {
+      connection.mockRespond(new Response(
+        new ResponseOptions({
+          status: 200,
+          body: { token: token }
+       })));
+    } else {
+      connection.mockRespond(new Response(
+        new ResponseOptions({ status: 400 })
+      ));
+    }
+  }
 
   backend.connections.subscribe((connection: MockConnection) => {
     // We are using the setTimeout() function to simulate an 
@@ -23,17 +64,7 @@ export function fakeBackendFactory(
         connection.request.method === RequestMethod.Post) {
         let body = JSON.parse(connection.request.getBody());
 
-        if (body.email === 'nology@domain.com' && body.password === '1234') {
-          connection.mockRespond(new Response(
-            new ResponseOptions({
-              status: 200,
-              body: { token: token }
-           })));
-        } else {
-          connection.mockRespond(new Response(
-            new ResponseOptions({ status: 400 })
-          ));
-        }
+        respond(body,connection);
       }
 
 
