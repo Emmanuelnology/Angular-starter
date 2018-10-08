@@ -31,26 +31,8 @@ export function fakeBackendFactory(
       case "john@gmail.local":
           token=john.notAdmin;
           break;
-      default:
-          token=jane.admin;
   }
   return token;
-  }
-
-  function respond(body,connection){
-   let token=getTokenFromEmail(body.email);
-
-    if (token && body.password === '1234') {
-      connection.mockRespond(new Response(
-        new ResponseOptions({
-          status: 200,
-          body: { token: token }
-       })));
-    } else {
-      connection.mockRespond(new Response(
-        new ResponseOptions({ status: 400 })
-      ));
-    }
   }
 
   backend.connections.subscribe((connection: MockConnection) => {
@@ -60,11 +42,23 @@ export function fakeBackendFactory(
       //
       // Fake implementation of /api/authenticate
       //
+      let token:string;
       if (connection.request.url.endsWith('/api/authenticate') &&
         connection.request.method === RequestMethod.Post) {
         let body = JSON.parse(connection.request.getBody());
 
-        respond(body,connection);
+        token=getTokenFromEmail(body.email);
+        if (token && body.password === '1234') {
+          connection.mockRespond(new Response(
+            new ResponseOptions({
+              status: 200,
+              body: { token: token }
+           })));
+        } else {
+          connection.mockRespond(new Response(
+            new ResponseOptions({ status: 400 })
+          ));
+        }
       }
 
 
