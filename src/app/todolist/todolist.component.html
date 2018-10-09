@@ -1,13 +1,13 @@
 <app-nav></app-nav>
 <div class="container">
-  <h1 class="display-4 m-4">My tasklist</h1>
+  <h1 class="display-4 m-5">My tasklist</h1>
   <table class="table">
     <thead>
       <tr>
         <th></th>
         <th>Task</th>
         <th>Priority</th>
-        <th>Action</th>
+        <th><span class="d-none d-sm-inline">Action</span></th>
       </tr>
     </thead>
     
@@ -31,9 +31,9 @@
           (click)="addTask(title,priority)"  
           type="button" 
             id="add-button" 
-            class="btn btn-success"
+            class="btn btn-success btn-sm"
             >
-            <i class="fa fa-plus"></i> Add
+            <i class="fa fa-plus"></i> <span class="d-none d-sm-inline"> Add</span>
           </button>
         </td>
       </tr>
@@ -52,7 +52,7 @@
        <td>
          <button (click)="deleteTask(i)" type='button' id='remove-button' class='btn btn-danger btn-sm'>
            <i class="fa fa-times"></i>
-            Remove
+           <span class="d-none d-sm-inline"> Remove</span>
         </button>
       </td>
     </tr>
