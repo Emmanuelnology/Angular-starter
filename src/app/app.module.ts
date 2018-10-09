@@ -1,6 +1,9 @@
 import { AuthGuard } from './services/auth-guard.service';
 import { AdminAuthGuard } from './services/admin-auth-guard.service';
 import { OrderService } from './services/order.service';
+import { TaskService } from './services/task.service';
+
+
 import { MockBackend } from '@angular/http/testing';
 import { fakeBackendProvider } from './helpers/fake-backend';
 import { AuthService } from './services/auth.service';
@@ -25,6 +28,7 @@ import { TokenInterceptor } from './services/token.interceptor';
 import { NavComponent } from './nav/nav.component';
 
 import { SpinnerComponent } from './spinner/spinner.component';
+import { TodolistComponent } from './todolist/todolist.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +40,8 @@ import { SpinnerComponent } from './spinner/spinner.component';
     NotFoundComponent,
     NoAccessComponent,
     NavComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    TodolistComponent
   ],
   imports: [
     NgbModule,
@@ -47,11 +52,13 @@ import { SpinnerComponent } from './spinner/spinner.component';
       { path: '', component: HomeComponent, canActivate: [AuthGuard] },
       { path: 'admin', component: AdminComponent, canActivate: [AuthGuard,AdminAuthGuard] },
       { path: 'login', component: LoginComponent },
+      { path: 'tasks', component: TodolistComponent },
       { path: 'no-access', component: NoAccessComponent }
     ])
   ],
   providers: [
     OrderService,
+    TaskService,
     AuthService,
     {
       provide: HTTP_INTERCEPTORS,

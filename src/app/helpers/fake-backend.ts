@@ -7,28 +7,28 @@ export function fakeBackendFactory(
     
       
   let jane={
-      admin: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwiZmlyc3ROYW1lIjoiSmFuZSIsImxhc3ROYW1lIjoiRG9lIiwiZW1haWwiOiJqYW5lQGdtYWlsLmxvY2FsIiwiaWF0IjoxNTM4NDk5NjgxLCJleHAiOjE1NDg0NjA4MDAsImF2YXRhciI6Imh0dHBzOi8vd3d3LnJ0aS5vcmcvc2l0ZXMvZGVmYXVsdC9maWxlcy9zdHlsZXMvcnRpX3NxdWFyZV8xMDIwL3B1YmxpYy9leHBlcnQtaW1hZ2VzL2FsbGVuX2phbmVfNzk0MV81MTAuanBnP2l0b2s9VlZtbFVwTHciLCJpc0FkbWluIjp0cnVlfQ.BadiWPqYsxX7tvHRbjmnX_T4fqdW7vs1ies_NQup-tM",
-      notAdmin: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwiZmlyc3ROYW1lIjoiSmFuZSIsImxhc3ROYW1lIjoiRG9lIiwiZW1haWwiOiJqYW5lQGdtYWlsLmxvY2FsIiwiaWF0IjoxNTM4NDk5NjgxLCJleHAiOjE1NDg0NjA4MDAsImF2YXRhciI6Imh0dHBzOi8vd3d3LnJ0aS5vcmcvc2l0ZXMvZGVmYXVsdC9maWxlcy9zdHlsZXMvcnRpX3NxdWFyZV8xMDIwL3B1YmxpYy9leHBlcnQtaW1hZ2VzL2FsbGVuX2phbmVfNzk0MV81MTAuanBnP2l0b2s9VlZtbFVwTHciLCJpc0FkbWluIjpmYWxzZX0.a2k3zspWMuj4FeGoouy-nJrHMlYyT9ClVH2IuXO-vl8"
+      admin: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwiZmlyc3ROYW1lIjoiSmFuZSIsImxhc3ROYW1lIjoiQWRtaW4iLCJlbWFpbCI6ImphbmUuYWRtaW5Abm9sb2d5LnRlc3QiLCJpYXQiOjE1Mzg0OTk2ODEsImV4cCI6MTU0ODQ2MDgwMCwiYXZhdGFyIjoiaHR0cHM6Ly93d3cucnRpLm9yZy9zaXRlcy9kZWZhdWx0L2ZpbGVzL3N0eWxlcy9ydGlfc3F1YXJlXzEwMjAvcHVibGljL2V4cGVydC1pbWFnZXMvYWxsZW5famFuZV83OTQxXzUxMC5qcGc_aXRvaz1WVm1sVXBMdyIsImlzQWRtaW4iOnRydWV9.cKsdKIYIAdakj7VQBUBlBdd_-ciTFpuSvpYidDfAFCw",
+      notAdmin: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyIiwiZmlyc3ROYW1lIjoiSmFuZSIsImxhc3ROYW1lIjoiRG9lIiwiZW1haWwiOiJqYW5lLmRvZUBub2xvZ3kudGVzdCIsImlhdCI6MTUzODQ5OTY4MSwiZXhwIjoxNTQ4NDYwODAwLCJhdmF0YXIiOiJodHRwOi8vZW5kbGVzc3RoZW1lLmNvbS9zaW1wbGlmeTEuMC9pbWFnZXMvcHJvZmlsZS9wcm9maWxlNy5qcGciLCJpc0FkbWluIjpmYWxzZX0.ZSTtHrl8wdgH2ZYwPJMPSqiQAmVj8NxOBpb93p0P8aQ"
     };
   let john={
-      admin: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwiZmlyc3ROYW1lIjoiSm9obiIsImxhc3ROYW1lIjoiRG9lIiwiZW1haWwiOiJqb2huQGdtYWlsLmxvY2FsIiwiaWF0IjoxNTM4NDk5NjgxLCJleHAiOjE1NDg0NjA4MDAsImF2YXRhciI6Imh0dHBzOi8vd3d3LmhvYS5veC5hYy51ay9zaXRlcy9kZWZhdWx0L2ZpbGVzL3N0eWxlcy9wZXJzb25fcHJvZmlsZV9waG90by9wdWJsaWMvaG9hL2ltYWdlcy9wZXJzb24vam9obl9ibGFraW5nZXJfMy5qcGc_aXRvaz12R0dDTmZzVyIsImlzQWRtaW4iOnRydWV9.4OtF2gAEg87MjGGS-RKU3-jnP20i0gBe6hyqVPrMkw4",
-      notAdmin: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwiZmlyc3ROYW1lIjoiSm9obiIsImxhc3ROYW1lIjoiRG9lIiwiZW1haWwiOiJqb2huQGdtYWlsLmxvY2FsIiwiaWF0IjoxNTM4NDk5NjgxLCJleHAiOjE1NDg0NjA4MDAsImF2YXRhciI6Imh0dHBzOi8vd3d3LmhvYS5veC5hYy51ay9zaXRlcy9kZWZhdWx0L2ZpbGVzL3N0eWxlcy9wZXJzb25fcHJvZmlsZV9waG90by9wdWJsaWMvaG9hL2ltYWdlcy9wZXJzb24vam9obl9ibGFraW5nZXJfMy5qcGc_aXRvaz12R0dDTmZzVyIsImlzQWRtaW4iOmZhbHNlfQ._ZRGljKt2WFqduP0oJJDqWKN4qC4O01V6c1anawf5Ls"
+      admin: "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIzIiwiZmlyc3ROYW1lIjoiSm9obiIsImxhc3ROYW1lIjoiQWRtaW4iLCJlbWFpbCI6ImpvaG4uYWRtaW5Abm9sb2d5LnRlc3QiLCJpYXQiOjE1Mzg0OTk2ODEsImV4cCI6MTU0ODQ2MDgwMCwiYXZhdGFyIjoiaHR0cHM6Ly93d3cuaG9hLm94LmFjLnVrL3NpdGVzL2RlZmF1bHQvZmlsZXMvc3R5bGVzL3BlcnNvbl9wcm9maWxlX3Bob3RvL3B1YmxpYy9ob2EvaW1hZ2VzL3BlcnNvbi9qb2huX2JsYWtpbmdlcl8zLmpwZz9pdG9rPXZHR0NOZnNXIiwiaXNBZG1pbiI6dHJ1ZX0.mRC3Inw9yGNYSq3D2UCL8b02pvIVMGJ9ZTOErPUIuHg",
+      notAdmin: "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI0IiwiZmlyc3ROYW1lIjoiSm9obiIsImxhc3ROYW1lIjoiRG9lIiwiZW1haWwiOiJqb2huLmRvZUBub2xvZ3kudGVzdCIsImlhdCI6MTUzODQ5OTY4MSwiZXhwIjoxNTQ4NDYwODAwLCJhdmF0YXIiOiJodHRwczovL2NhY3R1c3RoZW1lcy5jb20vYmxvZy93cC1jb250ZW50L3VwbG9hZHMvMjAxOC8wMS90dF9hdmF0YXJfc21hbGwuanBnIiwiaXNBZG1pbiI6ZmFsc2V9._SD_eP45umKEO6KzYI3edqf49m7KDbDShs4uRp42Xrs"
     };
 
   function getTokenFromEmail(email){
     let token:string;
 
     switch(email) {
-      case "jane@gmail.admin":
+      case "jane.admin@nology.test": //1
           token=jane.admin;
           break;
-      case "jane@gmail.local":
+      case "jane.doe@nology.test": //2
           token=jane.notAdmin;
           break;
-      case "john@gmail.admin":
+      case "john.admin@nology.test": //3
           token=john.admin;
           break;
-      case "john@gmail.local":
+      case "john.doe@nology.test": //4
           token=john.notAdmin;
           break;
   }

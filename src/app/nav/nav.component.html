@@ -9,6 +9,9 @@
       <li class="nav-item">
         <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
       </li>
+      <li *ngIf="authService.isLoggedIn()" class="nav-item">
+        <a class="nav-link" routerLink="/tasks" routerLinkActive="active">Tasks</a>
+      </li>
       <li *ngIf="authService.isLoggedIn() && authService.getCurrentUser().isAdmin" class="nav-item">
         <a class="nav-link" routerLink="/admin" routerLinkActive="active">Admin</a>
       </li>

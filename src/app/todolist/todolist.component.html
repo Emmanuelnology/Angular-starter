@@ -1,0 +1,62 @@
+<app-nav></app-nav>
+<div class="container">
+  <h1 class="display-4 m-4">My tasklist</h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Task</th>
+        <th>Priority</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    
+    <tbody id="table">
+      <tr>
+        <td></td>
+        <td>
+          <input 
+          #title type="text" class="form-control" id="task">
+        </td>
+        <td>
+          <select #priority class="form-control" id="priority">
+            <option>Low</option>
+            <option>Medium</option>
+            <option>High</option>
+            <option>Critical</option>
+          </select>
+        </td>
+        <td>
+          <button 
+          (click)="addTask(title,priority)"  
+          type="button" 
+            id="add-button" 
+            class="btn btn-success"
+            >
+            <i class="fa fa-plus"></i> Add
+          </button>
+        </td>
+      </tr>
+
+     <tr *ngFor="let task of tasks;let i=index">
+       <td>
+         <input 
+         (click)="toggleTask(i)" 
+         class="form-check-input" 
+          type="checkbox" 
+          [checked]="task.isChecked"
+         >
+       </td>
+       <td>{{task.title}}</td>
+       <td>{{task.priority}}</td>
+       <td>
+         <button (click)="deleteTask(i)" type='button' id='remove-button' class='btn btn-danger btn-sm'>
+           <i class="fa fa-times"></i>
+            Remove
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  
+</div>

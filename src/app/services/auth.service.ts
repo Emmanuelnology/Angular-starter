@@ -47,7 +47,6 @@ export class AuthService {
     if (!token) return null;
     
     let decodedToken=this.jwtHelper.decodeToken(token);
-    console.log(decodedToken);
     return decodedToken;
   }
 }
