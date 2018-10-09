@@ -10,6 +10,6 @@ export class OrderService {
   constructor(private http:HttpClient) {}
 
   getOrders() { 
-    return this.http.get("http://demo2781136.mockable.io/api/orders");
+    return this.http.get("https://demo2781136.mockable.io/api/orders");
   }
 }
