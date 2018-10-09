@@ -24,7 +24,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './services/token.interceptor';
 import { NavComponent } from './nav/nav.component';
 
-import { NgxSpinnerModule } from 'ngx-spinner';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -35,11 +35,11 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     HomeComponent,
     NotFoundComponent,
     NoAccessComponent,
-    NavComponent
+    NavComponent,
+    SpinnerComponent
   ],
   imports: [
     NgbModule,
-    NgxSpinnerModule,
     BrowserModule,
     FormsModule,
     HttpClientModule,

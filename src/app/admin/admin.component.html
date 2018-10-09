@@ -1,12 +1,11 @@
 <app-nav></app-nav>
 
 <div class="container">
-  <ngx-spinner></ngx-spinner>
   <div class="row">
     <div class="col">
     <h1 class="display-2 mt-3">Admin</h1>
     <h2>Orders</h2>
-    
+    <app-spinner [hideSpinner]="hideSpinner" message="Loading orders..."></app-spinner>
     <ul>
       <li *ngFor="let order of orders">{{ order }}</li>
     </ul>

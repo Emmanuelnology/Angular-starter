@@ -7,21 +7,16 @@ import { NgxSpinnerService } from 'ngx-spinner';
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
-  
+  private hideSpinner:boolean;
   orders;
-
-  constructor(
-    private orderService: OrderService,
-    private spinner: NgxSpinnerService
-    ) { }
+  constructor(private orderService: OrderService) { }
 
   ngOnInit() {
-    this.spinner.show();
     this.orderService.getOrders()
       .subscribe(
         orders => {
           this.orders = orders;
-          this.spinner.hide();
+          this.hideSpinner=true;
         },
         error=>{
           console.log(error);
