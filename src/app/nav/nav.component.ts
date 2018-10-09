@@ -9,7 +9,7 @@ import { Router, RouterModule } from '@angular/router';
 })
 export class NavComponent {
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(public authService: AuthService, private router: Router) { }
 
 
   logout(){
