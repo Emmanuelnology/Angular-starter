@@ -12,8 +12,7 @@ body {
     overflow-y: auto;
     max-height:80vh;
   }
-
-
+  
   @media (min-width: 768px) {
   .navbar-collapse {
     max-height:auto;

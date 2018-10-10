@@ -1,6 +1,7 @@
 import { AuthGuard } from './services/auth-guard.service';
 import { AdminAuthGuard } from './services/admin-auth-guard.service';
 import { OrderService } from './services/order.service';
+import { UserService } from './services/user.service';
 import { TaskService } from './services/task.service';
 
 
@@ -30,6 +31,8 @@ import { NavComponent } from './nav/nav.component';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { TodolistComponent } from './todolist/todolist.component';
 import { ErrorComponent } from './error/error.component';
+import { AccountComponent } from './account/account.component';
+import { SquareImageComponent } from './square-image/square-image.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +46,9 @@ import { ErrorComponent } from './error/error.component';
     NavComponent,
     SpinnerComponent,
     TodolistComponent,
-    ErrorComponent
+    ErrorComponent,
+    AccountComponent,
+    SquareImageComponent
   ],
   imports: [
     NgbModule,
@@ -55,12 +60,14 @@ import { ErrorComponent } from './error/error.component';
       { path: 'admin', component: AdminComponent, canActivate: [AuthGuard,AdminAuthGuard] },
       { path: 'login', component: LoginComponent },
       { path: 'tasks', component: TodolistComponent },
+      { path: 'account', component: AccountComponent },
       { path: 'no-access', component: NoAccessComponent },
       { path: '**', component: NotFoundComponent },
     ])
   ],
   providers: [
     OrderService,
+    UserService,
     TaskService,
     AuthService,
     {

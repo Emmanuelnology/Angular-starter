@@ -18,7 +18,7 @@ export class TodolistComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.tasks=this.taskService.getAll();
+    this.tasks=this.taskService.getCurrentUsersTasks();
   }
 
   addTask(title:HTMLInputElement,priority:HTMLSelectElement){
