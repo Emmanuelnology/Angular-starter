@@ -1,6 +1,7 @@
 <app-nav></app-nav>
 <div class="container">
   <h1 class="display-4 m-5">My tasklist</h1>
+
   <table class="table">
     <thead>
       <tr>
@@ -12,11 +13,18 @@
     </thead>
     
     <tbody id="table">
+        
       <tr>
         <td></td>
         <td>
           <input 
-          #title type="text" class="form-control" id="task">
+            #title 
+            (keyup)="validate(title)" 
+            type="text" 
+            class="form-control" 
+            id="task"
+            placeholder="New task"
+            >
         </td>
         <td>
           <select #priority class="form-control" id="priority">
@@ -28,6 +36,7 @@
         </td>
         <td>
           <button 
+          [disabled]="!isValid"
           (click)="addTask(title,priority)"  
           type="button" 
             id="add-button" 
@@ -37,7 +46,7 @@
           </button>
         </td>
       </tr>
-
+    
      <tr *ngFor="let task of tasks;let i=index">
        <td>
          <input 
@@ -58,5 +67,4 @@
     </tr>
     </tbody>
   </table>
-  
 </div>

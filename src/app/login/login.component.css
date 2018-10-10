@@ -1,4 +1,8 @@
 
+.logo {
+  max-width:300px;
+}
+
 .form-signin {
   max-width: 330px;
   padding: 15px;

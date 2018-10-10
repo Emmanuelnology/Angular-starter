@@ -29,6 +29,7 @@ import { NavComponent } from './nav/nav.component';
 
 import { SpinnerComponent } from './spinner/spinner.component';
 import { TodolistComponent } from './todolist/todolist.component';
+import { ErrorComponent } from './error/error.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { TodolistComponent } from './todolist/todolist.component';
     NoAccessComponent,
     NavComponent,
     SpinnerComponent,
-    TodolistComponent
+    TodolistComponent,
+    ErrorComponent
   ],
   imports: [
     NgbModule,
@@ -53,7 +55,8 @@ import { TodolistComponent } from './todolist/todolist.component';
       { path: 'admin', component: AdminComponent, canActivate: [AuthGuard,AdminAuthGuard] },
       { path: 'login', component: LoginComponent },
       { path: 'tasks', component: TodolistComponent },
-      { path: 'no-access', component: NoAccessComponent }
+      { path: 'no-access', component: NoAccessComponent },
+      { path: '**', component: NotFoundComponent },
     ])
   ],
   providers: [

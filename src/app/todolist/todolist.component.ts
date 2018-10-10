@@ -9,8 +9,13 @@ import { TaskService,ITask } from '../services/task.service';
 export class TodolistComponent implements OnInit {
 
   tasks:ITask[];
+  isValid:boolean=false;
 
   constructor(private taskService:TaskService) { }
+
+  validate(title){
+    this.isValid=(title.value.length>0);
+  }
 
   ngOnInit() {
     this.tasks=this.taskService.getAll();
