@@ -14,6 +14,6 @@ export class UserService {
   constructor(private http:HttpClient) {}
 
   getUsers() { 
-    return this.http.get("http://demo1917475.mockable.io/users");
+    return this.http.get("https://demo1917475.mockable.io/users");
   }
 }
