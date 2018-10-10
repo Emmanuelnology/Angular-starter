@@ -1,17 +1,12 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from "@angular/core";
 
 @Component({
-  selector: 'app-spinner',
-  templateUrl: './spinner.component.html',
-  styleUrls: ['./spinner.component.css']
+  selector: "app-spinner",
+  styleUrls: ["./spinner.component.css"],
+  templateUrl: "./spinner.component.html",
 })
-export class SpinnerComponent implements OnInit {
-  @Input('hideSpinner') hideSpinner:boolean = false;
-  @Input('message') message:string='Loading';
-
-  constructor() { }
-
-  ngOnInit() {
-  }
+export class SpinnerComponent {
+  @Input() public hideSpinner = false;
+  @Input() public message = "Loading";
 
 }

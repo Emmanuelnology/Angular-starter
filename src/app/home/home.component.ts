@@ -1,25 +1,17 @@
-import { AuthService } from './../services/auth.service';
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-
+import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
+import { AuthService } from "./../services/auth.service";
 
 @Component({
-  selector: 'home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: "home",
+  styleUrls: ["./home.component.css"],
+  templateUrl: "./home.component.html",
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
 
   constructor(
-    public authService: AuthService, 
-    private router: Router
-    ) { 
+    public authService: AuthService,
+    private router: Router,
+    ) {}
+
   }
-
-  ngOnInit() {
-    
-  }
-
-  
-
-}

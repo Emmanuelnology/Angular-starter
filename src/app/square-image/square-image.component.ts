@@ -1,19 +1,13 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from "@angular/core";
 
 @Component({
-  selector: 'app-square-image',
-  templateUrl: './square-image.component.html',
-  styleUrls: ['./square-image.component.css']
+  selector: "app-square-image",
+  styleUrls: ["./square-image.component.css"],
+  templateUrl: "./square-image.component.html",
 })
-export class SquareImageComponent implements OnInit {
-  @Input() image:string;
-  @Input() size:string;
-  @Input() additionalClasses:string='';
-
-  constructor() { }
-
-  ngOnInit() {
-    console.log(this.image);
-  }
+export class SquareImageComponent {
+  @Input() public image: string;
+  @Input() public size: string;
+  @Input() public additionalClasses = "";
 
 }
