@@ -1,14 +1,14 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { SquareImageComponent } from './square-image.component';
+import { SquareImageComponent } from "./square-image.component";
 
-describe('SquareImageComponent', () => {
+describe("SquareImageComponent", () => {
   let component: SquareImageComponent;
   let fixture: ComponentFixture<SquareImageComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SquareImageComponent ]
+      declarations: [ SquareImageComponent ],
     })
     .compileComponents();
   }));
@@ -19,7 +19,7 @@ describe('SquareImageComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

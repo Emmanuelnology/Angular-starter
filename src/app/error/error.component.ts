@@ -1,18 +1,13 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from "@angular/core";
 
 @Component({
-  selector: 'app-error',
-  templateUrl: './error.component.html',
-  styleUrls: ['./error.component.css']
+  selector: "app-error",
+  styleUrls: ["./error.component.css"],
+  templateUrl: "./error.component.html",
 })
-export class ErrorComponent implements OnInit {
-  @Input('code') code:number;
-  @Input('title') title:string;
-  @Input('details') details:string;
-
-  constructor() { }
-
-  ngOnInit() {
-  }
+export class ErrorComponent {
+  @Input("code") public code: number;
+  @Input("title") public title: string;
+  @Input("details") public details: string;
 
 }

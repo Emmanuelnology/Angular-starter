@@ -1,26 +1,27 @@
-import { AuthService } from './../services/auth.service';
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
 import { Router } from "@angular/router";
+import { AuthService } from "./../services/auth.service";
 
 @Component({
-  selector: 'login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: "login",
+  styleUrls: ["./login.component.css"],
+  templateUrl: "./login.component.html",
 })
 export class LoginComponent {
-  invalidLogin: boolean; 
+  public invalidLogin: boolean;
 
   constructor(
-    private router: Router, 
+    private router: Router,
     private authService: AuthService) { }
 
-  signIn(credentials) {
+  public signIn(credentials) {
     this.authService.login(credentials)
-      .subscribe(result => { 
-        if (result)
-          this.router.navigate(['/']);
-        else  
-          this.invalidLogin = true; 
+      .subscribe((result) => {
+        if (result) {
+          this.router.navigate(["/"]);
+        } else {
+          this.invalidLogin = true;
+        }
       });
   }
 }
