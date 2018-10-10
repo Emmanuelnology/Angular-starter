@@ -79,6 +79,47 @@ export function fakeBackendFactory(
        }
     }
 
+     // 
+       // Fake implementation of /api/users
+       //
+       if (connection.request.url.endsWith('/api/users') && 
+           connection.request.method === RequestMethod.Get) {
+         if (connection.request.headers.get('Authorization') === 'Bearer ' + token) {
+            connection.mockRespond(new Response(
+              new ResponseOptions({ status: 200, body: [
+                {
+                  "id":1,
+                  "name": "Jane Admin",
+                  "avatar": "https://www.rti.org/sites/default/files/styles/rti_square_1020/public/expert-images/allen_jane_7941_510.jpg?itok=VVmlUpLw",
+                  "email": "jane.admin@nology.test"
+                },
+                {
+                  "id":2,
+                  "name": "Jane Doe",
+                  "avatar": "http://endlesstheme.com/simplify1.0/images/profile/profile7.jpg",
+                  "email": "jane.doe@nology.test"
+                },
+                {
+                  "id":3,
+                  "name": "John Admin",
+                  "avatar": "https://www.hoa.ox.ac.uk/sites/default/files/styles/person_profile_photo/public/hoa/images/person/john_blakinger_3.jpg?itok=vGGCNfsW",
+                  "email": "john.admin@nology.test"
+                },
+                {
+                  "id":4,
+                  "name": "John Doe",
+                  "avatar": "https://cactusthemes.com/blog/wp-content/uploads/2018/01/tt_avatar_small.jpg",
+                  "email": "john.doe@nology.test"
+                }
+              ] })
+         ));
+       } else {
+           connection.mockRespond(new Response(
+             new ResponseOptions({ status: 401 })
+           ));
+       }
+    }
+
 
 
     }, 1000);

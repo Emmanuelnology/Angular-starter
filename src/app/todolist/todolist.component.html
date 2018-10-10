@@ -40,7 +40,7 @@
           (click)="addTask(title,priority)"  
           type="button" 
             id="add-button" 
-            class="btn btn-success btn-sm"
+            class="btn btn-outline-success btn-sm"
             >
             <i class="fa fa-plus"></i> <span class="d-none d-sm-inline"> Add</span>
           </button>
@@ -59,7 +59,7 @@
        <td>{{task.title}}</td>
        <td>{{task.priority}}</td>
        <td>
-         <button (click)="deleteTask(i)" type='button' id='remove-button' class='btn btn-danger btn-sm'>
+         <button (click)="deleteTask(i)" type='button' id='remove-button' class='btn btn-outline-danger btn-sm'>
            <i class="fa fa-times"></i>
            <span class="d-none d-sm-inline"> Remove</span>
         </button>

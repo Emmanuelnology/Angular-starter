@@ -3,3 +3,21 @@
 body {
     padding-top: 3.5rem;
   }
+.nav-links {
+  max-width: 100vh;
+  overflow-y: auto;
+}
+
+  .navbar-collapse {
+    overflow-y: auto;
+    max-height:80vh;
+  }
+  
+  @media (min-width: 768px) {
+  .navbar-collapse {
+    max-height:auto;
+    overflow-y:inherit;
+  }
+
+  
+}
