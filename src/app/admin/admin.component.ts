@@ -1,8 +1,8 @@
 
-import { UserService,IUser } from './../services/user.service';
-import { TaskService,ITask } from '../services/task.service';
-
 import { Component, OnInit } from '@angular/core';
+import { TaskService } from '../services/task.service';
+import { IUser, UserService } from './../services/user.service';
+
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
