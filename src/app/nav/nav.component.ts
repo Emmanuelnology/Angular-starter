@@ -1,4 +1,4 @@
-import { AuthService } from '../services/auth.service';
+import { FbAuthService } from '../services/fb-auth.service';
 import { Component } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 
@@ -9,11 +9,13 @@ import { Router, RouterModule } from '@angular/router';
 })
 export class NavComponent {
 
-  constructor(public authService: AuthService, private router: Router) { }
+  constructor(public authService: FbAuthService, private router: Router) { }
 
 
-  logout(){
-    this.authService.logout();
+  logout() {
+    this.authService.doLogout().then(
+      res => console.log(res)
+    );
     this.router.navigate(['/login']);
   }
 

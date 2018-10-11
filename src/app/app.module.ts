@@ -3,7 +3,15 @@ import { AdminAuthGuard } from './services/admin-auth-guard.service';
 import { OrderService } from './services/order.service';
 import { UserService } from './services/user.service';
 import { TaskService } from './services/task.service';
+import { environment } from '../environments/environment';
+import { ReactiveFormsModule } from '@angular/forms';
 
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+
+import { GravatarModule } from 'ngx-gravatar';
 
 import { MockBackend } from '@angular/http/testing';
 import { fakeBackendProvider } from './helpers/fake-backend';
@@ -12,7 +20,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BaseRequestOptions } from '@angular/http';
-import { RouterModule } from '@angular/router'; 
+import { RouterModule } from '@angular/router';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
@@ -33,6 +41,8 @@ import { TodolistComponent } from './todolist/todolist.component';
 import { ErrorComponent } from './error/error.component';
 import { AccountComponent } from './account/account.component';
 import { SquareImageComponent } from './square-image/square-image.component';
+import { FbLoginComponent } from './fb-login/fb-login.component';
+import { FbRegisterComponent } from './fb-register/fb-register.component';
 
 @NgModule({
   declarations: [
@@ -48,19 +58,31 @@ import { SquareImageComponent } from './square-image/square-image.component';
     TodolistComponent,
     ErrorComponent,
     AccountComponent,
-    SquareImageComponent
+    SquareImageComponent,
+    FbLoginComponent,
+    FbRegisterComponent
   ],
   imports: [
     NgbModule,
     BrowserModule,
     FormsModule,
+    GravatarModule,
     HttpClientModule,
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    AngularFireAuthModule,
+    AngularFireStorageModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, canActivate: [AuthGuard] },
-      { path: 'admin', component: AdminComponent, canActivate: [AuthGuard,AdminAuthGuard] },
-      { path: 'login', component: LoginComponent },
-      { path: 'tasks', component: TodolistComponent },
-      { path: 'account', component: AccountComponent },
+      { path: 'login', component: FbLoginComponent },
+      { path: 'register', component: FbRegisterComponent },
+
+      { path: 'tasks', component: TodolistComponent, canActivate: [AuthGuard] },
+      { path: 'account', component: AccountComponent, canActivate: [AuthGuard] },
+
+      { path: 'admin', component: AdminComponent, canActivate: [AuthGuard, AdminAuthGuard] },
+
       { path: 'no-access', component: NoAccessComponent },
       { path: '**', component: NotFoundComponent },
     ])
@@ -76,7 +98,7 @@ import { SquareImageComponent } from './square-image/square-image.component';
       multi: true
     },
 
-    // For creating a mock back-end. You don't need these in a real app. 
+    // For creating a mock back-end. You don't need these in a real app.
     fakeBackendProvider,
     MockBackend,
     BaseRequestOptions

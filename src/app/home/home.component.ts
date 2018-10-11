@@ -1,25 +1,19 @@
-import { AuthService } from './../services/auth.service';
+import { FbAuthService } from './../services/fb-auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 
 @Component({
-  selector: 'home',
+  selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
 
   constructor(
-    public authService: AuthService, 
+    public authService: FbAuthService,
     private router: Router
-    ) { 
-  }
+    ) { }
 
-  ngOnInit() {
-    
-  }
-
-  
 
 }

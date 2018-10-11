@@ -3,7 +3,7 @@
 <!-- Main jumbotron for a primary marketing message or call to action -->
 <div class="jumbotron text-light">
   <div class="container">
-    <h1 class="display-3">Hi, {{ authService.getCurrentUser().firstName }}!</h1>
+    <h1 class="display-3">Hi, {{ authService.getCurrentUser().displayName }}!</h1>
     <p>This is a demo Angular Application for managing a todo-list. Use it as a starting point for creating something awesome.</p>
     <p><a class="btn btn-success btn-lg" routerLink="/tasks" role="button">Add a task &raquo;</a></p>
   </div>

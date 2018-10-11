@@ -1,22 +1,21 @@
 import { CanActivate, Router } from '@angular/router';
 import { Injectable } from '@angular/core';
-import { AuthService } from './auth.service';
+import { FbAuthService } from './fb-auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate{ 
+export class AuthGuard implements CanActivate {
 
   constructor(
-    private authService: AuthService,
+    private authService: FbAuthService,
     private router: Router
     ) { }
 
   canActivate() { // if logged in return true, otherwise return to login page and return false
-    if (this.authService.isLoggedIn()){
+    if (this.authService.isLoggedIn()) {
       return true;
-    }
-    else {
+    } else {
       this.router.navigate(['/login'])
       return false;
     }

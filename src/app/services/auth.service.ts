@@ -6,25 +6,27 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService {
-  jwtHelper=new JwtHelperService();
+  jwtHelper = new JwtHelperService();
   constructor(private http: Http) {
 
   }
 
   getToken() {
-    let token=localStorage.getItem('token');
-    if(token) return token;
+    const token = localStorage.getItem('token');
+    if (token) {
+      return token;
+    }
       return null
   }
 
-  login(credentials) { 
-   return this.http.post('/api/authenticate', 
+  login(credentials) {
+   return this.http.post('/api/authenticate',
       JSON.stringify(credentials))
       .pipe(
         map(response => {
-            let result=response.json();
-            if(result && result.token){
-              localStorage.setItem('token',result.token);
+            const result = response.json();
+            if (result && result.token) {
+              localStorage.setItem('token', result.token);
               return true;
             }
             return false;
@@ -32,21 +34,20 @@ export class AuthService {
       );
   }
 
-  logout() { 
+  logout() {
     localStorage.removeItem('token');
     return !this.getToken();
   }
 
-  isLoggedIn() { 
-    let token=this.getToken();
+  isLoggedIn() {
+    const token = this.getToken();
     return !this.jwtHelper.isTokenExpired(token);
   }
 
   getCurrentUser() {
-    let token=this.getToken();
-    if (!token) return null;
-    
-    let decodedToken=this.jwtHelper.decodeToken(token);
+    const token = this.getToken();
+    if (!token) {return null};
+    const decodedToken = this.jwtHelper.decodeToken(token);
     return decodedToken;
   }
 }
