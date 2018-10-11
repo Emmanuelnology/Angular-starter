@@ -1,47 +1,44 @@
-import { Component } from '@angular/core';
-import { FbAuthService } from '../services/fb-auth.service'
-import { Router, Params } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component } from "@angular/core";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Params, Router } from "@angular/router";
+import { FbAuthService } from "../services/fb-auth.service";
 
 @Component({
-  selector: 'app-fb-register',
-  templateUrl: './fb-register.component.html',
-  styleUrls: ['./fb-register.component.css']
+  selector: "app-fb-register",
+  styleUrls: ["./fb-register.component.css"],
+  templateUrl: "./fb-register.component.html",
 })
 
   export class FbRegisterComponent {
 
-    registerForm: FormGroup;
-    errorMessage = '';
-    successMessage = '';
+    public registerForm: FormGroup;
+    public errorMessage = "";
+    public successMessage = "";
 
     constructor(
       public authService: FbAuthService,
       private router: Router,
-      private fb: FormBuilder
+      private fb: FormBuilder,
     ) {
       this.createForm();
      }
 
-     createForm() {
+     public createForm() {
        this.registerForm = this.fb.group({
-         email: ['', Validators.required ],
-         password: ['', Validators.required]
+         email: ["", Validators.required ],
+         password: ["", Validators.required],
        });
      }
 
-     tryRegister(value) {
+     public tryRegister(value) {
        this.authService.doRegister(value)
-       .then(res => {
-         console.log(res);
-         this.errorMessage = '';
-         this.successMessage = 'Your account has been created';
-       }, err => {
-         console.log(err);
+       .then((res) => {
+         this.errorMessage = "";
+         this.successMessage = "Your account has been created";
+       }, (err) => {
          this.errorMessage = err.message;
-         this.successMessage = '';
-       })
+         this.successMessage = "";
+       });
      }
 
   }
-

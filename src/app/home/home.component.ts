@@ -1,19 +1,17 @@
-import { FbAuthService } from './../services/fb-auth.service';
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-
+import { Component } from "@angular/core";
+import { Router } from "@angular/router";
+import { FbAuthService } from "./../services/fb-auth.service";
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: "app-home",
+  styleUrls: ["./home.component.css"],
+  templateUrl: "./home.component.html",
 })
 export class HomeComponent {
 
   constructor(
     public authService: FbAuthService,
-    private router: Router
+    private router: Router,
     ) { }
-
 
 }

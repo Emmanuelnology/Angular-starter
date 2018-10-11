@@ -1,54 +1,52 @@
-import { Injectable } from '@angular/core';
-import { JwtHelperService } from '@auth0/angular-jwt';
-import { Http } from '@angular/http';
-import { map } from 'rxjs/operators';
+import { Injectable } from "@angular/core";
+import { Http } from "@angular/http";
+import { JwtHelperService } from "@auth0/angular-jwt";
+import { map } from "rxjs/operators";
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class AuthService {
-  jwtHelper = new JwtHelperService();
+  public jwtHelper = new JwtHelperService();
   constructor(private http: Http) {
 
   }
 
-  getToken() {
-    const token = localStorage.getItem('token');
-    if (token) {
-      return token;
-    }
-      return null
+  public getToken() {
+    const token = localStorage.getItem("token");
+    if (token) { return token; }
+    return null;
   }
 
-  login(credentials) {
-   return this.http.post('/api/authenticate',
+  public login(credentials) {
+   return this.http.post("/api/authenticate",
       JSON.stringify(credentials))
       .pipe(
-        map(response => {
+        map((response) => {
             const result = response.json();
             if (result && result.token) {
-              localStorage.setItem('token', result.token);
+              localStorage.setItem("token", result.token);
               return true;
             }
             return false;
-          })
+          }),
       );
   }
 
-  logout() {
-    localStorage.removeItem('token');
+  public logout() {
+    localStorage.removeItem("token");
     return !this.getToken();
   }
 
-  isLoggedIn() {
+  public isLoggedIn() {
     const token = this.getToken();
     return !this.jwtHelper.isTokenExpired(token);
   }
 
-  getCurrentUser() {
+  public getCurrentUser() {
     const token = this.getToken();
-    if (!token) {return null};
+    if (!token) { return null; }
+
     const decodedToken = this.jwtHelper.decodeToken(token);
     return decodedToken;
   }
 }
-

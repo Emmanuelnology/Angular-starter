@@ -1,22 +1,21 @@
-import { FbAuthService } from '../services/fb-auth.service';
-import { Component } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
+import { Component } from "@angular/core";
+import { FbAuthService } from "../services/fb-auth.service";
+
+import { Router } from "@angular/router";
 
 @Component({
-  selector: 'app-nav',
-  templateUrl: './nav.component.html',
-  styleUrls: ['./nav.component.css']
+  selector: "app-nav",
+  styleUrls: ["./nav.component.css"],
+  templateUrl: "./nav.component.html",
 })
 export class NavComponent {
 
   constructor(public authService: FbAuthService, private router: Router) { }
 
-
-  logout() {
+  public logout() {
     this.authService.doLogout().then(
-      res => console.log(res)
-    );
-    this.router.navigate(['/login']);
+      () => this.router.navigate(["/login"]),
+      );
   }
 
 }

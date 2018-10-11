@@ -1,14 +1,14 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { FbRegisterComponent } from './fb-register.component';
+import { FbRegisterComponent } from "./fb-register.component";
 
-describe('FbRegisterComponent', () => {
+describe("FbRegisterComponent", () => {
   let component: FbRegisterComponent;
   let fixture: ComponentFixture<FbRegisterComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FbRegisterComponent ]
+      declarations: [ FbRegisterComponent ],
     })
     .compileComponents();
   }));
@@ -19,7 +19,7 @@ describe('FbRegisterComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

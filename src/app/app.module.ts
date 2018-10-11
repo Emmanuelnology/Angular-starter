@@ -1,54 +1,59 @@
-import { AuthGuard } from './services/auth-guard.service';
-import { AdminAuthGuard } from './services/admin-auth-guard.service';
-import { OrderService } from './services/order.service';
-import { UserService } from './services/user.service';
-import { TaskService } from './services/task.service';
-import { environment } from '../environments/environment';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from "@angular/forms";
+import { environment } from "../environments/environment";
 
-import { AngularFireModule } from '@angular/fire';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { AngularFireStorageModule } from '@angular/fire/storage';
-import { AngularFireAuthModule } from '@angular/fire/auth';
+// Auth
 
-import { GravatarModule } from 'ngx-gravatar';
+import { AdminAuthGuard } from "./services/admin-auth-guard.service";
+import { AuthGuard } from "./services/auth-guard.service";
+import { TokenInterceptor } from "./services/token.interceptor";
 
-import { MockBackend } from '@angular/http/testing';
-import { fakeBackendProvider } from './helpers/fake-backend';
-import { AuthService } from './services/auth.service';
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { BaseRequestOptions } from '@angular/http';
-import { RouterModule } from '@angular/router';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+// Services
+import { FbAuthService } from "./services/fb-auth.service";
+import { OrderService } from "./services/order.service";
+import { TaskService } from "./services/task.service";
+import { UserService } from "./services/user.service";
 
-import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
-import { SignupComponent } from './signup/signup.component';
-import { AdminComponent } from './admin/admin.component';
-import { NotFoundComponent } from './not-found/not-found.component';
-import { NoAccessComponent } from './no-access/no-access.component';
+// HTTP
+import { HttpClientModule } from "@angular/common/http";
+import { HTTP_INTERCEPTORS } from "@angular/common/http";
 
-import { HttpClientModule } from '@angular/common/http';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { TokenInterceptor } from './services/token.interceptor';
-import { NavComponent } from './nav/nav.component';
+// Firebase
+import { AngularFireModule } from "@angular/fire";
+import { AngularFireAuthModule } from "@angular/fire/auth";
+import { AngularFirestoreModule } from "@angular/fire/firestore";
+import { AngularFireStorageModule } from "@angular/fire/storage";
 
-import { SpinnerComponent } from './spinner/spinner.component';
-import { TodolistComponent } from './todolist/todolist.component';
-import { ErrorComponent } from './error/error.component';
-import { AccountComponent } from './account/account.component';
-import { SquareImageComponent } from './square-image/square-image.component';
-import { FbLoginComponent } from './fb-login/fb-login.component';
-import { FbRegisterComponent } from './fb-register/fb-register.component';
+import { GravatarModule } from "ngx-gravatar";
+
+import { NgModule } from "@angular/core";
+import { FormsModule } from "@angular/forms";
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+
+import { BaseRequestOptions } from "@angular/http";
+import { MockBackend } from "@angular/http/testing";
+import { fakeBackendProvider } from "./helpers/fake-backend";
+
+import { BrowserModule } from "@angular/platform-browser";
+import { RouterModule } from "@angular/router";
+
+import { AccountComponent } from "./account/account.component";
+import { AdminComponent } from "./admin/admin.component";
+import { AppComponent } from "./app.component";
+import { ErrorComponent } from "./error/error.component";
+import { FbLoginComponent } from "./fb-login/fb-login.component";
+import { FbRegisterComponent } from "./fb-register/fb-register.component";
+import { HomeComponent } from "./home/home.component";
+import { NavComponent } from "./nav/nav.component";
+import { NoAccessComponent } from "./no-access/no-access.component";
+import { NotFoundComponent } from "./not-found/not-found.component";
+import { SpinnerComponent } from "./spinner/spinner.component";
+import { SquareImageComponent } from "./square-image/square-image.component";
+import { TodolistComponent } from "./todolist/todolist.component";
 
 @NgModule({
+  bootstrap: [AppComponent],
   declarations: [
     AppComponent,
-    LoginComponent,
-    SignupComponent,
     AdminComponent,
     HomeComponent,
     NotFoundComponent,
@@ -60,7 +65,7 @@ import { FbRegisterComponent } from './fb-register/fb-register.component';
     AccountComponent,
     SquareImageComponent,
     FbLoginComponent,
-    FbRegisterComponent
+    FbRegisterComponent,
   ],
   imports: [
     NgbModule,
@@ -74,35 +79,34 @@ import { FbRegisterComponent } from './fb-register/fb-register.component';
     AngularFireAuthModule,
     AngularFireStorageModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent, canActivate: [AuthGuard] },
-      { path: 'login', component: FbLoginComponent },
-      { path: 'register', component: FbRegisterComponent },
+      { path: "", component: HomeComponent, canActivate: [AuthGuard] },
+      { path: "login", component: FbLoginComponent },
+      { path: "register", component: FbRegisterComponent },
 
-      { path: 'tasks', component: TodolistComponent, canActivate: [AuthGuard] },
-      { path: 'account', component: AccountComponent, canActivate: [AuthGuard] },
+      { path: "tasks", component: TodolistComponent, canActivate: [AuthGuard] },
+      { path: "account", component: AccountComponent, canActivate: [AuthGuard] },
 
-      { path: 'admin', component: AdminComponent, canActivate: [AuthGuard, AdminAuthGuard] },
+      { path: "admin", component: AdminComponent, canActivate: [AuthGuard, AdminAuthGuard] },
 
-      { path: 'no-access', component: NoAccessComponent },
-      { path: '**', component: NotFoundComponent },
-    ])
+      { path: "no-access", component: NoAccessComponent },
+      { path: "**", component: NotFoundComponent },
+    ]),
   ],
   providers: [
     OrderService,
     UserService,
     TaskService,
-    AuthService,
+    FbAuthService,
     {
+      multi: true,
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
-      multi: true
     },
 
     // For creating a mock back-end. You don't need these in a real app.
     fakeBackendProvider,
     MockBackend,
-    BaseRequestOptions
+    BaseRequestOptions,
   ],
-  bootstrap: [AppComponent]
 })
 export class AppModule { }

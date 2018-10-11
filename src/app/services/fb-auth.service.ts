@@ -1,46 +1,45 @@
-import { Injectable } from '@angular/core';
-import * as firebase from 'firebase/app';
-import { AngularFireAuth } from '@angular/fire/auth';
+import { Injectable } from "@angular/core";
+import { AngularFireAuth } from "@angular/fire/auth";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 
 export class FbAuthService {
 
   constructor(
-    public firebaseAuth: AngularFireAuth
+    public firebaseAuth: AngularFireAuth,
   ) { }
 
-   doRegister(value) {
+   public doRegister(value) {
     return this.firebaseAuth
     .auth.createUserAndRetrieveDataWithEmailAndPassword(
       value.email,
-      value.password
+      value.password,
     );
    }
 
-   doLogin(value) {
+   public doLogin(value) {
     return this.firebaseAuth
       .auth.signInWithEmailAndPassword(
         value.email,
-        value.password
+        value.password,
       );
    }
 
-   doLogout() {
+   public doLogout() {
     return this.firebaseAuth
       .auth.signOut();
    }
 
-   isLoggedIn(): boolean {
+   public isLoggedIn(): boolean {
      if (this.getCurrentUser()) {
       return true;
      }
-    return false;
+     return false;
    }
 
-   getCurrentUser() {
+   public getCurrentUser() {
     return this.firebaseAuth
       .auth.currentUser;
    }
