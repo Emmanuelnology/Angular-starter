@@ -13,7 +13,7 @@
         <a class="nav-link" routerLink="/tasks" >Tasks</a>
       </li>
     
-      <li *ngIf="authService.isLoggedIn() && authService.getCurrentUser().isAdmin" routerLinkActive="active" class="nav-item mr-3">
+      <li *ngIf="authService.isLoggedIn()" routerLinkActive="active" class="nav-item mr-3">
         <a class="nav-link" routerLink="/admin" >Admin</a>
       </li>
     </ul>
@@ -22,17 +22,22 @@
       <li class="nav-item dropdown" routerLinkActive="active" >
         <a href="#" class="nav-link dropdown-toggle" id="account-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <span class="fa fa-user"></span> 
-          {{ authService.getCurrentUser().firstName }}
+          {{ authService.getCurrentUser().displayName }}
         </a>
         <ul class="dropdown-menu dropdown-menu-right nav-account p-4">
           <li>
             
             <div class="row text-center text-sm-left">
               <div class="col-sm-4">
-                <img class="avatar" src="{{ authService.getCurrentUser().avatar }}" alt="{{ authService.getCurrentUser().firstName }}" />
+                <img class="avatar" 
+                ngxGravatar 
+                [email]="authService.getCurrentUser().email" 
+                size="300" 
+                alt="avatar">
+               
               </div>
               <div class="col-sm-8 mt-3 mt-sm-0 details">
-                <span class="d-block font-weight-bold">{{ authService.getCurrentUser().firstName }} {{ authService.getCurrentUser().lastName }}</span>
+                <span class="d-block font-weight-bold">{{ authService.getCurrentUser().displayName }}</span>
                 <span class="d-block small text-muted">{{ authService.getCurrentUser().email }}</span>
                 <button routerLink="/account" class="btn btn-primary btn-block btn-sm">Account</button>
               </div>
