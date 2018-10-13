@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { CanActivate, Router } from "@angular/router";
-import { AuthService } from "./auth.service";
+import { FbAuthService } from "./fb-auth.service";
 
 @Injectable({
   providedIn: "root",
@@ -8,7 +8,7 @@ import { AuthService } from "./auth.service";
 export class AuthGuard implements CanActivate {
 
   constructor(
-    private authService: AuthService,
+    private authService: FbAuthService,
     private router: Router,
     ) { }
 

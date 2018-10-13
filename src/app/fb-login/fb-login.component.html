@@ -1,0 +1,36 @@
+
+
+  <form class="form-signin text-center p-3" [formGroup]="loginForm">
+      <img class="logo mb-3 w-100" src="assets/nology.gif" alt="logo" />
+      <hr />
+  <div class="mt-4 mb-3">
+      <div class="form-group">
+      <label for="inputEmail" class="sr-only">Email address</label>
+      <input 
+        type="email" 
+        formControlName="email" 
+        class="form-control" 
+        id="inputEmail" 
+        name="email" 
+        class="form-control" 
+        placeholder="Email address" 
+        required 
+        autofocus>
+      </div>
+      <div class="form-group">
+      <label for="inputPassword" class="sr-only">Password</label>
+      <input 
+        type="password" 
+        class="form-control" 
+        formControlName="password" 
+        type="password" 
+        id="inputPassword" 
+        name="password" 
+        placeholder="Password" 
+        required>
+      <label class="error mt-3 text-danger">{{errorMessage}}</label>
+    </div>
+    </div>
+    <button type="submit" (click)="tryLogin(loginForm.value)" class="btn btn-lg btn-success btn-block mb-3">Login</button>
+    <p>No account yet? <a routerLink="/register">Create an account</a></p>
+</form>

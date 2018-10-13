@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
-import { Router, RouterModule } from "@angular/router";
-import { AuthService } from "../services/auth.service";
+import { FbAuthService } from "../services/fb-auth.service";
+
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-nav",
@@ -9,11 +10,12 @@ import { AuthService } from "../services/auth.service";
 })
 export class NavComponent {
 
-  constructor(public authService: AuthService, private router: Router) { }
+  constructor(public authService: FbAuthService, private router: Router) { }
 
   public logout() {
-    this.authService.logout();
-    this.router.navigate(["/login"]);
+    this.authService.doLogout().then(
+      () => this.router.navigate(["/login"]),
+      );
   }
 
 }

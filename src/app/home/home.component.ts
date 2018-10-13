@@ -1,17 +1,17 @@
-import { Component, OnInit } from "@angular/core";
+import { Component } from "@angular/core";
 import { Router } from "@angular/router";
-import { AuthService } from "./../services/auth.service";
+import { FbAuthService } from "./../services/fb-auth.service";
 
 @Component({
-  selector: "home",
+  selector: "app-home",
   styleUrls: ["./home.component.css"],
   templateUrl: "./home.component.html",
 })
 export class HomeComponent {
 
   constructor(
-    public authService: AuthService,
+    public authService: FbAuthService,
     private router: Router,
-    ) {}
+    ) { }
 
-  }
+}

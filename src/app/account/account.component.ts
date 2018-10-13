@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { AuthService } from "../services/auth.service";
+import { FbAuthService } from "../services/fb-auth.service";
 import { TaskService } from "../services/task.service";
 
 @Component({
@@ -9,10 +9,10 @@ import { TaskService } from "../services/task.service";
 })
 export class AccountComponent implements OnInit {
   public taskCount;
-  constructor(public authService: AuthService, private taskService: TaskService) { }
+  constructor(public authService: FbAuthService, private taskService: TaskService) { }
 
   public ngOnInit() {
-    const taskList = this.taskService.getByUser(this.authService.getCurrentUser().sub);
+    const taskList = this.taskService.getByUser(this.authService.getCurrentUser().uid);
     if (taskList) {
       this.taskCount = taskList.length;
     } else {
