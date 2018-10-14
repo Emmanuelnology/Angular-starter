@@ -43,4 +43,5 @@ export class FbAuthService {
     return this.firebaseAuth
       .auth.currentUser;
    }
+
 }

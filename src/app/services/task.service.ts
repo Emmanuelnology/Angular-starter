@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { AuthService } from "./auth.service";
+import { FbAuthService } from "./fb-auth.service";
 
 export interface ITask {
   isChecked: boolean;
@@ -12,14 +12,14 @@ export interface ITask {
 })
 export class TaskService {
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: FbAuthService) { }
 
   public getCurrentUsersTasks() {
     return this.getByUser(this.getCurrentUserID());
   }
 
   public getCurrentUserID() {
-    return this.authService.getCurrentUser().sub;
+    return this.authService.getCurrentUser().uid;
   }
 
   public getRefFromID(id) {

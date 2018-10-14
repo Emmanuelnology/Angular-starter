@@ -5,11 +5,9 @@ import { environment } from "../environments/environment";
 
 import { AdminAuthGuard } from "./services/admin-auth-guard.service";
 import { AuthGuard } from "./services/auth-guard.service";
-import { TokenInterceptor } from "./services/token.interceptor";
 
 // Services
 import { FbAuthService } from "./services/fb-auth.service";
-import { OrderService } from "./services/order.service";
 import { TaskService } from "./services/task.service";
 import { UserService } from "./services/user.service";
 
@@ -93,20 +91,9 @@ import { TodolistComponent } from "./todolist/todolist.component";
     ]),
   ],
   providers: [
-    OrderService,
     UserService,
     TaskService,
     FbAuthService,
-    {
-      multi: true,
-      provide: HTTP_INTERCEPTORS,
-      useClass: TokenInterceptor,
-    },
-
-    // For creating a mock back-end. You don't need these in a real app.
-    fakeBackendProvider,
-    MockBackend,
-    BaseRequestOptions,
   ],
 })
 export class AppModule { }
