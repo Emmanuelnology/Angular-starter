@@ -9,7 +9,6 @@ import { UserService } from "../services/user.service";
 })
 export class AccountComponent implements OnInit {
   public taskCount;
-  public currentUser;
 
   constructor(
     public authService: FbAuthService,
@@ -17,11 +16,7 @@ export class AccountComponent implements OnInit {
     ) {}
 
    public ngOnInit() {
-    this.userService.currentUser.subscribe(
-      (user) => {
-        this.currentUser = user.data();
-      },
-    );
-  }
+     // ...
+    }
 
 }

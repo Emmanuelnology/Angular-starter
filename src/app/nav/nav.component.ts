@@ -2,8 +2,6 @@ import { Component, OnInit } from "@angular/core";
 import { FbAuthService } from "../services/fb-auth.service";
 import { IUser, UserService  } from "../services/user.service";
 
-import { map  } from "rxjs/operators";
-
 import { Router } from "@angular/router";
 
 @Component({
@@ -26,11 +24,8 @@ export class NavComponent implements OnInit {
       }
 
   public ngOnInit() {
-    this.userService.currentUser.subscribe(
-      (user) => {
-        this.currentUser = user.data();
-      },
-    );
+    // ...
+
   }
 
 }

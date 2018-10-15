@@ -1,6 +1,6 @@
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from "@angular/fire/firestore";
 
-import { Injectable } from "@angular/core";
+import { Injectable, OnInit } from "@angular/core";
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
 
@@ -15,8 +15,9 @@ export interface IUser {
 }
 
 @Injectable()
-export class UserService {
-  public currentUser: Observable<any>;
+export class UserService implements OnInit{
+  public currentUser$: Observable<any>;
+  public currentUser: IUser;
   public users: Observable<any>;
   private userCollection: AngularFirestoreCollection<IUser>;
 
@@ -36,8 +37,20 @@ export class UserService {
       );
 
       const id = "EuN1EEIkWqgmhkHQdvEKeg3xP052";
-      const ref = this.userCollection.doc(id);
-      this.currentUser = ref.get();
+      this.currentUser$ = this.userCollection.doc(id).get();
+      this.currentUser$.subscribe(
+        (user) => {
+          this.currentUser = (user.data() as IUser);
+        },
+      );
+    }
+
+    public ngOnInit() {
+     // ...
+    }
+
+    public getCurrentUser() {
+      return this.currentUser;
     }
 
 }
