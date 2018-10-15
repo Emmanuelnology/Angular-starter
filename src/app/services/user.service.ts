@@ -1,4 +1,5 @@
-import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from "@angular/fire/firestore";
+import { AngularFirestore, AngularFirestoreCollection } from "@angular/fire/firestore";
+import { FbAuthService } from "../services/fb-auth.service";
 
 import { Injectable, OnInit } from "@angular/core";
 import { Observable } from "rxjs";
@@ -15,7 +16,7 @@ export interface IUser {
 }
 
 @Injectable()
-export class UserService implements OnInit{
+export class UserService implements OnInit {
   public currentUser$: Observable<any>;
   public currentUser: IUser;
   public users: Observable<any>;
@@ -23,9 +24,10 @@ export class UserService implements OnInit{
 
   constructor(
     private fireStore: AngularFirestore,
+    private authService: FbAuthService,
     ) {
       this.userCollection = this.fireStore.collection<IUser>("users");
-      // this.users = this.userCollection.valueChanges();
+
       this.users = this.userCollection.snapshotChanges().pipe(
         map((changes) => {
           return changes.map((a) => {
@@ -36,7 +38,7 @@ export class UserService implements OnInit{
         }),
       );
 
-      const id = "EuN1EEIkWqgmhkHQdvEKeg3xP052";
+      const id = this.authService.getCurrentUser().uid;
       this.currentUser$ = this.userCollection.doc(id).get();
       this.currentUser$.subscribe(
         (user) => {

@@ -7,9 +7,17 @@ import { AngularFireAuth } from "@angular/fire/auth";
 
 export class FbAuthService {
 
+  public currentUser;
+
   constructor(
     public firebaseAuth: AngularFireAuth,
-  ) { }
+  ) {
+    this.firebaseAuth
+    .auth.onAuthStateChanged((user) => {
+    this.currentUser = user;
+  });
+
+  }
 
    public doRegister(value) {
     return this.firebaseAuth
@@ -40,8 +48,7 @@ export class FbAuthService {
    }
 
    public getCurrentUser() {
-    return this.firebaseAuth
-      .auth.currentUser;
+    return this.currentUser;
    }
 
 }
