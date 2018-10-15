@@ -1,6 +1,8 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { FbAuthService } from "../services/fb-auth.service";
-import { UserService } from "../services/user.service";
+import { IUser, UserService  } from "../services/user.service";
+
+import { map  } from "rxjs/operators";
 
 import { Router } from "@angular/router";
 
@@ -9,8 +11,8 @@ import { Router } from "@angular/router";
   styleUrls: ["./nav.component.css"],
   templateUrl: "./nav.component.html",
 })
-export class NavComponent {
-
+export class NavComponent implements OnInit {
+  public currentUser;
   constructor(
     public authService: FbAuthService,
     private router: Router,
@@ -18,9 +20,17 @@ export class NavComponent {
     ) { }
 
   public logout() {
-    this.authService.doLogout().then(
-      () => this.router.navigate(["/login"]),
-      );
+      this.authService.doLogout().then(
+        () => this.router.navigate(["/login"]),
+        );
+      }
+
+  public ngOnInit() {
+    this.userService.currentUser.subscribe(
+      (user) => {
+        this.currentUser = user.data();
+      },
+    );
   }
 
 }

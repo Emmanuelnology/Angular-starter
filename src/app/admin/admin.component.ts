@@ -1,7 +1,8 @@
 
 import { Component, OnInit } from "@angular/core";
-import { TaskService } from "../services/task.service";
 import { IUser, UserService } from "./../services/user.service";
+
+import { Observable } from "rxjs";
 
 @Component({
   selector: "app-admin",
@@ -10,22 +11,11 @@ import { IUser, UserService } from "./../services/user.service";
 })
 export class AdminComponent implements OnInit {
   public hideSpinner: boolean;
-  public users: IUser[];
+  public users: Observable<IUser[]>;
 
-  constructor(private userService: UserService, private taskService: TaskService) {}
+  constructor(private userService: UserService) {}
 
   public ngOnInit() {
-
-      this.userService.users
-      .subscribe(
-        (users) => {
-          this.users = (users as IUser[]);
-          this.hideSpinner = true;
-        },
-        (error) => {
-          throw new error("Error getting users");
-        },
-        );
-
+    this.users = this.userService.users;
   }
 }

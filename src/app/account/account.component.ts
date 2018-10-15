@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FbAuthService } from "../services/fb-auth.service";
-import { TaskService } from "../services/task.service";
+import { UserService } from "../services/user.service";
 
 @Component({
   selector: "app-account",
@@ -9,15 +9,19 @@ import { TaskService } from "../services/task.service";
 })
 export class AccountComponent implements OnInit {
   public taskCount;
-  constructor(public authService: FbAuthService, private taskService: TaskService) { }
+  public currentUser;
 
-  public ngOnInit() {
-    const taskList = this.taskService.getByUser(this.authService.getCurrentUser().uid);
-    if (taskList) {
-      this.taskCount = taskList.length;
-    } else {
-    this.taskCount = 0;
-    }
+  constructor(
+    public authService: FbAuthService,
+    private userService: UserService,
+    ) {}
+
+   public ngOnInit() {
+    this.userService.currentUser.subscribe(
+      (user) => {
+        this.currentUser = user.data();
+      },
+    );
   }
 
 }
