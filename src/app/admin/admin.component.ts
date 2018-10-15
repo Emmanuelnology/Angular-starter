@@ -16,21 +16,11 @@ export class AdminComponent implements OnInit {
 
   public ngOnInit() {
 
-      this.userService.getUsers()
+      this.userService.users
       .subscribe(
         (users) => {
           this.users = (users as IUser[]);
           this.hideSpinner = true;
-
-          for (const user of this.users) {
-            const taskList = this.taskService.getByUser(user.id);
-            if (taskList) {
-              user.taskCount = taskList.length;
-            } else {
-            user.taskCount = 0;
-            }
-          }
-
         },
         (error) => {
           throw new error("Error getting users");

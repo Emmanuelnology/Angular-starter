@@ -13,7 +13,7 @@
         <a class="nav-link" routerLink="/tasks" >Tasks</a>
       </li>
     
-      <li *ngIf="authService.isLoggedIn()" routerLinkActive="active" class="nav-item mr-3">
+      <li *ngIf="authService.isLoggedIn() && userService.getCurrentUser().claims.isAdmin" routerLinkActive="active" class="nav-item mr-3">
         <a class="nav-link" routerLink="/admin" >Admin</a>
       </li>
     </ul>
