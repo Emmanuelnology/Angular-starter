@@ -25,6 +25,7 @@ export class UserService implements OnInit {
   constructor(
     private fireStore: AngularFirestore,
     private authService: FbAuthService,
+
     ) {
       this.userCollection = this.fireStore.collection<IUser>("users");
 
