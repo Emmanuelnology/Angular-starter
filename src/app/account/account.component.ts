@@ -12,7 +12,7 @@ export class AccountComponent implements OnInit {
 
   constructor(
     public authService: FbAuthService,
-    private userService: UserService,
+    public userService: UserService,
     ) {}
 
    public ngOnInit() {
