@@ -10,8 +10,7 @@ export class AdminAuthGuard implements CanActivate {
   constructor(private router: Router, private userService: UserService) { }
 
   public canActivate() {
-
-    const user = this.userService.getCurrentUser();
+    const user = this.userService.currentUser;
     if (user && user.claims.isAdmin === true) {
       return true;
     }

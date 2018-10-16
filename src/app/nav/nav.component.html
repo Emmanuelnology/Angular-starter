@@ -13,7 +13,7 @@
         <a class="nav-link" routerLink="/tasks" >Tasks</a>
       </li>
     
-      <li *ngIf="authService.isLoggedIn() && userService.getCurrentUser().claims.isAdmin" routerLinkActive="active" class="nav-item mr-3">
+      <li *ngIf="authService.isLoggedIn() && (userService.currentUser$ | async)?.claims.isAdmin" routerLinkActive="active" class="nav-item mr-3">
         <a class="nav-link" routerLink="/admin" >Admin</a>
       </li>
     </ul>
@@ -22,23 +22,24 @@
       <li class="nav-item dropdown" routerLinkActive="active" >
         <a href="#" class="nav-link dropdown-toggle" id="account-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <span class="fa fa-user"></span> 
-          {{ authService.getCurrentUser().displayName }}
+          {{ (userService.currentUser$ | async)?.displayName }}
         </a>
         <ul class="dropdown-menu dropdown-menu-right nav-account p-4">
           <li>
             
             <div class="row text-center text-sm-left">
               <div class="col-sm-4">
-                <img class="avatar" 
+                <img 
+                class="avatar" 
                 ngxGravatar 
-                [email]="authService.getCurrentUser().email" 
+                [email]="(userService.currentUser$ | async)?.email || ''" 
                 size="300" 
                 alt="avatar">
                
               </div>
               <div class="col-sm-8 mt-3 mt-sm-0 details">
-                <span class="d-block font-weight-bold">{{ authService.getCurrentUser().displayName }}</span>
-                <span class="d-block small text-muted">{{ authService.getCurrentUser().email }}</span>
+                <span class="d-block font-weight-bold">{{ (userService.currentUser$ | async)?.displayName }}</span>
+                <span class="d-block small text-muted">{{ (userService.currentUser$ | async)?.email }}</span>
                 <button routerLink="/account" class="btn btn-primary btn-block btn-sm">Account</button>
               </div>
             </div>

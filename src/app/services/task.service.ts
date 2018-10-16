@@ -1,8 +1,10 @@
+import { AngularFirestore, AngularFirestoreCollection } from "@angular/fire/firestore";
+
 import { Injectable } from "@angular/core";
-import { FbAuthService } from "./fb-auth.service";
+import { Observable } from "rxjs";
 
 export interface ITask {
-  isChecked: boolean;
+  isComplete: boolean;
   title: string;
   priority: string;
 }
@@ -10,16 +12,24 @@ export interface ITask {
 @Injectable({
   providedIn: "root",
 })
-export class TaskService {
 
-  constructor(private authService: FbAuthService) { }
+export class TaskService {
+  public tasks: Observable<ITask[]>;
+  private taskCollection: AngularFirestoreCollection<ITask>;
+
+  constructor(
+    private fireStore: AngularFirestore,
+    ) {
+      this.taskCollection = this.fireStore.collection<ITask>("tasks");
+      this.tasks = this.taskCollection.valueChanges();
+    }
 
   public getCurrentUsersTasks() {
     return this.getByUser(this.getCurrentUserID());
   }
 
   public getCurrentUserID() {
-    return this.authService.getCurrentUser().uid;
+    return 1;
   }
 
   public getRefFromID(id) {

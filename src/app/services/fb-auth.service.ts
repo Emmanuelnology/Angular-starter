@@ -7,41 +7,53 @@ import { AngularFireAuth } from "@angular/fire/auth";
 
 export class FbAuthService {
 
+  public currentUser;
   constructor(
     public firebaseAuth: AngularFireAuth,
-  ) { }
+    ) {
 
-   public doRegister(value) {
-    return this.firebaseAuth
-    .auth.createUserAndRetrieveDataWithEmailAndPassword(
-      value.email,
-      value.password,
-    );
-   }
+      this.firebaseAuth
+      .auth.onAuthStateChanged((user) => {
+        this.currentUser = user;
+      });
 
-   public doLogin(value) {
-    return this.firebaseAuth
-      .auth.signInWithEmailAndPassword(
+    }
+
+    public doRegister(value) {
+      return this.firebaseAuth
+      .auth.createUserAndRetrieveDataWithEmailAndPassword(
         value.email,
         value.password,
-      );
-   }
+        );
+      }
 
-   public doLogout() {
-    return this.firebaseAuth
-      .auth.signOut();
-   }
+      public doLogin(value) {
+        return this.firebaseAuth
+        .auth.signInWithEmailAndPassword(
+          value.email,
+          value.password,
+          );
+        }
 
-   public isLoggedIn(): boolean {
-     if (this.getCurrentUser()) {
-      return true;
-     }
-     return false;
-   }
+        public doLogout() {
+          return this.firebaseAuth
+          .auth.signOut();
+        }
 
-   public getCurrentUser() {
-    return this.firebaseAuth
-      .auth.currentUser;
-   }
+        public isLoggedIn() {
+          if (this.getCurrentUser()) {
+            return true;
+          } else {
+            return false;
+          }
+        }
 
-}
+        public getCurrentUserID() {
+          return this.firebaseAuth.authState;
+        }
+
+        public getCurrentUser() {
+          return this.currentUser;
+        }
+
+      }

@@ -23,7 +23,7 @@ export class TodolistComponent implements OnInit {
 
   public addTask(title: HTMLInputElement, priority: HTMLSelectElement) {
    const newTask: ITask = {
-      isChecked: false,
+      isComplete: false,
       priority: priority.value,
       title: title.value,
     };

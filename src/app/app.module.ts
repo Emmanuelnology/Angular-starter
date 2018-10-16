@@ -94,6 +94,7 @@ import { TodolistComponent } from "./todolist/todolist.component";
     UserService,
     TaskService,
     FbAuthService,
+    AuthGuard,
   ],
 })
 export class AppModule { }
