@@ -3,7 +3,7 @@ import { FbAuthService } from "../services/fb-auth.service";
 
 import { Injectable, OnInit } from "@angular/core";
 import { Observable } from "rxjs";
-import { map } from "rxjs/operators";
+import { map, switchMap } from "rxjs/operators";
 
 export interface IUser {
   claims: {
@@ -39,12 +39,19 @@ export class UserService implements OnInit {
         }),
       );
 
-      const id = this.authService.getCurrentUser().uid;
-      this.currentUser$ = this.userCollection.doc(id).get();
-      this.currentUser$.subscribe(
-        (user) => {
-          this.currentUser = (user.data() as IUser);
+      this.currentUser$ = this.authService.getCurrentUserID().pipe(
+        switchMap(
+        (authState) => {
+          return this.userCollection.doc(authState.uid).get()
+            .pipe(
+              map(
+                (user) => {
+                  return (user.data() as IUser);
+                },
+              ),
+            );
         },
+        ),
       );
     }
 

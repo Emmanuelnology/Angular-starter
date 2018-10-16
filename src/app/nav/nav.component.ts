@@ -15,7 +15,8 @@ export class NavComponent implements OnInit {
     public authService: FbAuthService,
     private router: Router,
     public userService: UserService,
-    ) { }
+    ) {
+     }
 
   public logout() {
       this.authService.doLogout().then(

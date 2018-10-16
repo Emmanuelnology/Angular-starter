@@ -48,6 +48,10 @@ export class FbAuthService {
           }
         }
 
+        public getCurrentUserID() {
+          return this.firebaseAuth.authState;
+        }
+
         public getCurrentUser() {
           return this.currentUser;
         }
